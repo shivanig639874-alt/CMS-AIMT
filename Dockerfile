@@ -2,6 +2,13 @@ FROM python:3.12-slim
 ENV PYTHONUNBUFFERED=1
 WORKDIR /app
 
+# Install OS packages needed for builds and setuptools
+RUN apt-get update && apt-get install -y --no-install-recommends \
+	build-essential \
+	gcc \
+	python3-setuptools \
+ && rm -rf /var/lib/apt/lists/*
+
 # Copy only what's needed from the app subfolder
 # Use JSON array form for COPY to handle paths with spaces
 COPY ["SIM AIMT/Programs/SIM AIMT/requirements.txt", "requirements.txt"]
