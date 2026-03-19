@@ -9,6 +9,9 @@ COPY ["SIM AIMT/Programs/SIM AIMT/requirements.txt", "requirements.txt"]
 RUN pip install --no-cache-dir --upgrade pip setuptools wheel
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Ensure setuptools (pkg_resources) is present at runtime
+RUN pip install --no-cache-dir --upgrade setuptools
+
 # Copy application code into /app
 COPY ["SIM AIMT/Programs/SIM AIMT", "/app"]
 
