@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: aimt-web
+    env: docker
+    plan: free
+    branch: main
+    dockerfilePath: SIM AIMT/Programs/SIM AIMT/Dockerfile
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: PORT
+        value: '5000'
